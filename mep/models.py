@@ -46,6 +46,7 @@ class LEPS(Model):
         if isinstance(image, Image):
             image = image.data
         image = np.atleast_2d(image)
+        #print(image)
         rab = image[:, 0]
         rbc = image[:, 1]
         rac = rab + rbc

@@ -1,6 +1,6 @@
 from typing import List, Union
 from collections.abc import Sized
-from pymatgen import Structure, Molecule, Site
+from pymatgen.core import Structure, Molecule, Site
 import numpy as np
 from mep.utils import interpolate_molecule
 
@@ -39,7 +39,7 @@ class Image(Node):
         else:
             self._structure_or_mol = None
             self.type = 'Simple'
-            data = np.atleast_2d(image).astype(np.float)
+            data = np.atleast_2d(image).astype(float)
         super().__init__(data)
 
     def move(self, direction: np.ndarray) -> None:

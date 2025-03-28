@@ -1,4 +1,4 @@
-from pymatgen import Molecule
+from pymatgen.core import Molecule
 import numpy as np
 import collections
 

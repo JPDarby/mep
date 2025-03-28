@@ -123,6 +123,7 @@ class NEB:
     def energy_path(self):
         energies = np.array([i-self.energies[0] for i in self.energies]).ravel()
         distances = np.cumsum(self.path.image_distances).ravel() / np.sum(self.path.image_distances)
+        print(energies.shape, distances.shape)
         return np.array([distances, energies]).T
 
 
