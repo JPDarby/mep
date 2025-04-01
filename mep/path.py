@@ -210,6 +210,21 @@ class Path:
         dximage = dimage / (n-1)
         return cls([np.array(image_start) + dximage * i for i in range(n)], k=k)
 
+    @classmethod
+    def from_linear_sequence(cls, image_locs, n, k=-5):
+        Npairs = len(image_locs)-1
+        n_per = max(3, int(round(n/Npairs)))
+        images = []
+        for i in range(0, Npairs):
+            image_start = image_locs[i]
+            image_end = image_locs[i+1]
+            dimage = np.array(image_end) - np.array(image_start)
+            dximage = dimage / (n_per-1)
+            images += [np.array(image_start) + dximage * i for i in range(n_per-1)]
+        images += [np.array(image_locs[-1])]
+        print(images)
+        return cls(images, k=k)
+
     @property
     def k(self):
         return self._k
